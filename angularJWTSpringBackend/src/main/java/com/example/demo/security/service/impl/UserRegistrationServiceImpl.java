@@ -32,19 +32,13 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
         user.setCreatedOn(new Date());
         user.setEnabled(true);
         user.setLocked(false);
-
-        Role userRole=new Role(RoleEnum.USER);
-        Set<Role> userRoleset=new HashSet<>();
-        userRoleset.add(userRole);
-        user.setRoles(userRoleset);
+        user.setRoles(roleRepo.findAllByname("USER"));
 
         user.setPhoneNumber(newUserDetail.getPhoneNumber());
-        user.setUserFullName(newUserDetail.getUserFullName());
+        user.setFirstName(newUserDetail.getFirstName());
+        user.setLastName(newUserDetail.getLastName());
         user.setUserPublicId(UUID.randomUUID().toString());
 
-        for(Role role:user.getRoles()) {
-            roleRepo.save(role);
-        }
 
         user.setPassWord(BCrypt.hashpw(user.getPassWord(), BCrypt.gensalt()));
         User savedUser = userRepo.save(user);
@@ -66,7 +60,7 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
         user.setRoles(roles);
 
         user.setPhoneNumber(newUserDetail.getPhoneNumber());
-        user.setUserFullName(newUserDetail.getUserFullName());
+
         user.setUserPublicId(UUID.randomUUID().toString());
 
         for(Role role:roles) {

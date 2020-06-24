@@ -16,9 +16,12 @@ public class NewUserDetail{
 
     private String userPublicId;
 
-    @NotNull(message = "Full name can not be empty")
+    @NotNull(message = "First name can not be empty")
     @Size(min = 2,message = "Full name should be at least 2 characters")
-    private String userFullName;
+    private String firstName;
+    @NotNull(message = "Last name can not be empty")
+    @Size(min = 2,message = "Full name should be at least 2 characters")
+    private String LastName;
     @NotNull(message = "Phone can not be empty")
     @Size(min = 10,message = "Phone number should be at least 10 digit")
     private String phoneNumber;

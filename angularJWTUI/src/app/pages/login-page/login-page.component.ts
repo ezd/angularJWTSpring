@@ -32,25 +32,28 @@ messege:string;
   }
   onFormSubmit(f:NgForm){
     if(f.value && f.value.username && f.value.password){
-      
-      debugger
+
       const username=f.value.username;
       const password=f.value.password;
       this.backeEndService.authenticate(username,password).subscribe(result=>{
+        console.log("result is:",result);
+        
         if(result!=null){
-          debugger
+          // debugger
           this.authResulte=result
+          console.log("Auth result:",this.authResulte);
+          
           if(this.authResulte.token!=null && this.authResulte.pid!=null){
             sessionStorage.setItem("token",this.authResulte.token)
             sessionStorage.setItem("pid",this.authResulte.pid)
             this.router.navigate(['home'])
           }
-
-          
         }
       },
       error=>{
-        this.messege="Not valid user name and passowrd";
+        console.log(error);
+        
+        this.messege="Invalid user credential.";
       });
     }
     

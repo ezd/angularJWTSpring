@@ -30,20 +30,34 @@
 
                 </div> 
             -->
-            <div class="form-group ">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                    </div>
-                    <input name="userFullName" class="form-control" placeholder="Full name" type="text" 
-                    [(ngModel)]="userModel.userFullName" required #userFullNamecomponent="ngModel"
-                    pattern="[A-Za-z ]{2,}"
-                    >
-                </div> 
-                <small id="userFullNameHelpBlock" class="form-text text-muted alert-danger" *ngIf="userFullNamecomponent.touched && userFullNamecomponent.invalid">
-                        Please insert correct name.Only characters allowed.
-                </small>
-            </div>    
+        <div class="form-group ">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                </div>
+                <input name="userFirstName" class="form-control" placeholder="First name" type="text" 
+                [(ngModel)]="userModel.userFirstName" required #userFirstNamecomponent="ngModel"
+                pattern="[A-Za-z ]{2,}"
+                >
+            </div> 
+            <small id="userFirstNameHelpBlock" class="form-text text-muted alert-danger" *ngIf="userFirstNamecomponent.touched && userFirstNamecomponent.invalid">
+                    Please insert correct name.Only characters allowed.
+            </small>
+        </div>  
+        <div class="form-group ">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                </div>
+                <input name="userLastName" class="form-control" placeholder="Last name" type="text" 
+                [(ngModel)]="userModel.userLastName" required #userLastNamecomponent="ngModel"
+                pattern="[A-Za-z ]{2,}"
+                >
+            </div> 
+            <small id="userLastNameHelpBlock" class="form-text text-muted alert-danger" *ngIf="userLastNamecomponent.touched && userLastNamecomponent.invalid">
+                    Please insert correct name.Only characters allowed.
+            </small>
+        </div>    
         <!-- form-group// -->
         <div class="form-group">
             <div class="input-group">

@@ -20,7 +20,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private static final String[] RESOURCES = {
-            "/css/**","/js/**","/","/webjars/**","/login","/publicinfo","/contactus","/aboutus","/forgetPassword","/register","/h2-console/**","/authenticate"
+            "/css/**","/js/**","/","/webjars/**","/login","/publicinfo","/contactus","/forgetPassword" //unused
+            ,"/aboutus","/users/createUser","/h2-console/**","/users/authenticate"//used
     };
 
     @Autowired

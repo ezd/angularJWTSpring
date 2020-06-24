@@ -7,16 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 
 @RestController
 @RequestMapping("/users")
-public class UserController {
+@CrossOrigin(origins = "*")
+public class UserRegistrationController {
 
     @Autowired
     UserRegistrationService userRegistrationService;
@@ -31,10 +29,12 @@ public class UserController {
         if(!userRegistrationService.isUserNameExists(userDetail.getEmail())) {
 
             savedUserDetail = userRegistrationService.saveUser(userDetail);
-            final String token = jwtTokenUtil.generateToken(savedUserDetail.getEmail());
-            HttpHeaders responseHeaders=new HttpHeaders();
-            responseHeaders.add("Authorization","Bearer "+token);
-            return ResponseEntity.created(new URI("/users/createUser")).headers(responseHeaders).body(savedUserDetail);
+//            final String token = jwtTokenUtil.generateToken(savedUserDetail.getEmail());
+//            HttpHeaders responseHeaders=new HttpHeaders();
+//            responseHeaders.add("Authorization","Bearer "+token);
+            return ResponseEntity.created(new URI("/users/createUser"))
+//                    .headers(responseHeaders)
+                    .body(savedUserDetail);
         }else{
             return new ResponseEntity(userDetail, HttpStatus.CONFLICT);
 //                throw new SQLException("User by email id:"+userDetail.getEmail()+" already exisits");

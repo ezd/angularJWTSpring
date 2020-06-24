@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
-  baseUserAuthUrl: 'http://localhost:8084/users',  
-  resourceUrl: 'http://localhost:8083/resource' 
+  resourceUrl: 'http://localhost:8083/resource',
+  baseUserUrl: 'http://localhost:8080/users'
+
 };
 
 /*

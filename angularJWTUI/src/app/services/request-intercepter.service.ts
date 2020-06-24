@@ -9,7 +9,7 @@ import { headersToString } from 'selenium-webdriver/http';
 export class RequestIntercepterService implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler):
     Observable<HttpEvent<any>> {
-      debugger
+      // debugger
       let token=sessionStorage.getItem('token')
       let pid=sessionStorage.getItem('pid')
       let tokenizeRequest=null

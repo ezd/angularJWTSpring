@@ -27,7 +27,7 @@ export class BackEndService {
   
   constructor(private httpClinet:HttpClient) { 
     
-    this.usersBaseUrl = environment.baseUserAuthUrl;
+    this.usersBaseUrl = environment.baseUserUrl;
     this.resourceBaseUrl=environment.resourceUrl
   }
   
@@ -48,8 +48,8 @@ export class BackEndService {
 
 public authenticate(username:string,password:string):Observable<Object>{
   debugger
-  const userlogininfo={"username": username,"password": password}
-  return this.httpClinet.post(this.usersBaseUrl+'/login',userlogininfo);
+  const userlogininfo={"userName": username,"password": password}
+  return this.httpClinet.post(this.usersBaseUrl+'/authenticate',userlogininfo);
 }
 
 

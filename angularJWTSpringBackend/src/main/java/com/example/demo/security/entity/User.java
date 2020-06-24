@@ -19,15 +19,12 @@ public class User {
     String passWord;
     boolean isLocked;
     boolean isEnabled;
-//    @ManyToOne(fetch= FetchType.EAGER)
-//    @JoinColumn(name="RoleId")
-//    Role role;
-//    boolean enabled;
     @ManyToMany(fetch=FetchType.EAGER)
     @JoinTable(name="role_user",joinColumns=@JoinColumn(name="user_id"),inverseJoinColumns=@JoinColumn(name="role_id"))
     private Set<Role> roles=new HashSet<>();
     Date createdOn;
-    private String userFullName;
+    private String firstName;
+    private String lastName;
     private String phoneNumber;
     private String userPublicId;
 }

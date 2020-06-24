@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  baseUserAuthUrl: 'http://localhost:8082/users'
+  resourceUrl: 'http://localhost:8083/resource',
+  baseUserUrl: 'http://localhost:8080/users'
 };
