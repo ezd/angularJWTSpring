@@ -8,8 +8,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Slf4j
 public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
     UserRepo userRepo;
@@ -18,7 +20,8 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         User userUserName = userRepo.findByUserName(userName);
         if(userUserName == null){
-            throw new UsernameNotFoundException("Could not find user");
+            //throw new UsernameNotFoundException("Could not find user");
+            log.error("Error occured when User name: {} is trying to access",userName);
         }
         return new CustomUserDetails(userUserName);
     }
