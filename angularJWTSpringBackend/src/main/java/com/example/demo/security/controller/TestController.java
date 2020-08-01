@@ -11,13 +11,12 @@ public class TestController {
         return "aboutus Testing works";
     }
 
-    @GetMapping("/user/dosomething")
-    public String usertesting(){
-        return "user Testing works";
-    }
+
 
     @GetMapping("/admin/addadmin")
     public String admintesting(){
         return "admin Testing works";
     }
+
+
 }

@@ -1,6 +1,9 @@
 package com.example.demo.security.filter;
 
+import com.example.demo.security.model.ErrorResponse;
 import com.example.demo.security.utils.JwtTokenUtil;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,6 +18,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @Component
 public class JWTFilter extends OncePerRequestFilter {
@@ -29,8 +33,10 @@ public class JWTFilter extends OncePerRequestFilter {
         if(authorizationHeaderValue!=null && authorizationHeaderValue.startsWith("Bearer ")){
 
             String token = authorizationHeaderValue.substring(7);
-            String usernameFromToken = jwtTokenUtil.getUsernameFromToken(token);
+            try {
+                String usernameFromToken = jwtTokenUtil.getUsernameFromToken(token);
             UserDetails userDetails = customUserDetailsService.loadUserByUsername(usernameFromToken);
+
             if(jwtTokenUtil.validateToken(token,userDetails)) {
 
                 UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
@@ -40,9 +46,16 @@ public class JWTFilter extends OncePerRequestFilter {
                         .setDetails(new WebAuthenticationDetailsSource().buildDetails(httpServletRequest));
                 SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
             }
+            }catch (IllegalArgumentException e){
+                logger.error("Exception in the response writer");
+            }catch (ExpiredJwtException e){
+                logger.error("Exception in the response writer");
+            }catch (Exception e){
+                logger.error("Exception in the response writer");
+            }
         }
         filterChain.doFilter(httpServletRequest, httpServletResponse);
 
-
     }
+
 }
