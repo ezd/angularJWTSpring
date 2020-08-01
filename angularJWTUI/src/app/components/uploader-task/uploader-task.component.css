@@ -1,0 +1,19 @@
+
+/* .imageBox{
+    width: 200px;
+    float: left;
+    margin: 2px;
+    padding: 2px;
+}
+.uploadedimages{
+    height: 200px;
+} */
+.progress{
+    width: 100%;
+}
+.example-card {
+    width: 300px;
+    height: 360px;
+    float: left;
+    margin: 10px;
+  }

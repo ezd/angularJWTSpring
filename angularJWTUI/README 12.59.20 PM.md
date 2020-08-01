@@ -1,3 +1,8 @@
+# update from angular 8 to 10
+Since the previous project was angular 8 it requires the following changes,
+https://update.angular.io/#9.0:10.0
+ng update @angular-devkit/build-angular
+
 # AngularJWTUI
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.14.

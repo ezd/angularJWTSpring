@@ -13,16 +13,18 @@ export class Resource1Component implements OnInit {
   constructor(private backEndService:BackEndService) { }
 
   ngOnInit() {
-    debugger
-    this.backEndService.getResource('testing').subscribe(
+    // debugger
+    this.backEndService.getResource('resource').subscribe(
       result=>{
-        debugger
+        
         this.mycontnet=result
+        // debugger
         console.log("result is",result);
         
       },
       error=>{
-        console.error("error geging")
+        console.error("error getting test resource",error)
+        // debugger
 
       })
   }

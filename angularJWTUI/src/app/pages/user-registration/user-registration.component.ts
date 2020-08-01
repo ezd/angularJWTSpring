@@ -41,7 +41,7 @@ export class UserRegistrationComponent implements OnInit {
         console.log("result",result); 
         this.savedUser=result;
         // sessionStorage.setItem("pid",this.savedUser.userPublicId)
-        this.router.navigate(['/account/login'])
+        this.router.navigate(['/account/signin'])
         //debugger
         //this.alertModel=new AlertModel(true,"Success","User Saved","The user successfully registerd.")
       },

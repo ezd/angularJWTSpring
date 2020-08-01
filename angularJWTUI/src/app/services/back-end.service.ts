@@ -23,12 +23,14 @@ export class BackEndService {
   
   private usersBaseUrl: string;
   private resourceBaseUrl: string;
+  private publicBaseUrl: string;
   
   
   constructor(private httpClinet:HttpClient) { 
     
     this.usersBaseUrl = environment.baseUserUrl;
-    this.resourceBaseUrl=environment.resourceUrl
+    this.resourceBaseUrl=environment.resourceUrl;
+    this.publicBaseUrl=environment.basePublicUrl;
   }
   
   // public findAllUsers(): Observable<UserModel[]> {
@@ -36,8 +38,8 @@ export class BackEndService {
   // }
 
   public registerUser(user: UserModel):Observable<Object> {
-    debugger;
-      return this.httpClinet.post(this.usersBaseUrl+'/createUser',user);
+    // debugger;
+      return this.httpClinet.post(this.publicBaseUrl+'/createUser',user);
   // 
 }
 // public isValidTokenAndPid(token,pid):Observable<Object> {
@@ -47,17 +49,17 @@ export class BackEndService {
 // }
 
 public authenticate(username:string,password:string):Observable<Object>{
-  debugger
+  // debugger
   const userlogininfo={"userName": username,"password": password}
-  return this.httpClinet.post(this.usersBaseUrl+'/authenticate',userlogininfo);
+  return this.httpClinet.post(this.publicBaseUrl+'/authenticate',userlogininfo);
 }
 
 
 public getResource(resourceName:string):Observable<Object> {
   
-  debugger
+  // debugger
   console.log("the session storated:",sessionStorage.getItem('pid'))
-  return this.httpClinet.get(this.resourceBaseUrl+"/"+resourceName);
+  return this.httpClinet.get(this.usersBaseUrl+"/"+resourceName);
 // 
 }
 

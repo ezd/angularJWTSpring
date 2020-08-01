@@ -1,147 +1,133 @@
-<div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="alertModel&&alertModel.isShow && alertModel.alertType=='Success'">
-    <h4 class="alert-heading">{{alertModel.alertMessege}}</h4>
-    <p>{{alertModel.alertDetailMessege}}</p>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="alertModel.isShow=false">
-        <span aria-hidden="true">&times;</span>
-      </button>
-  </div>
-  <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="alertModel&&alertModel.isShow && alertModel.alertType=='Fail'">
-    <h4 class="alert-heading">{{alertModel.alertMessege}}</h4>
-    <p>{{alertModel.alertDetailMessege}}</p>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="alertModel.isShow=false">
-        <span aria-hidden="true">&times;</span>
-      </button>
-  </div>
-<div class="card bg-light">
-    <article class="card-body mx-auto" style="max-width: 400px;">
-        <h4 class="card-title mt-3 text-center">Create Account</h4>
-        <p class="text-center">Get started with your account registration</p>
-        <!-- <p>
-            <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login via Twitter</a>
-            <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via facebook</a>
-        </p>
-        <p class="divider-text">
-            <span class="bg-light">OR</span>
-        </p> -->
-        <!--  -->
-        <form  #f="ngForm" (ngSubmit)="onFormSubmit(f)">
-            <!-- 
-                <div class="form-group ">
+<section>
+    <mat-card class="example-card">
+        <mat-card-header fxLayout="column" fxLayoutAlign="center center">
+            <mat-card-title>Create Account</mat-card-title>
+            <mat-card-subtitle>
+                <div class="alert alert-success alert-dismissible fade show" role="alert"
+                    *ngIf="alertModel&&alertModel.isShow && alertModel.alertType=='Success'">
+                    <h4 class="alert-heading">{{alertModel.alertMessege}}</h4>
+                    <p>{{alertModel.alertDetailMessege}}</p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                        (click)="alertModel.isShow=false">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert"
+                    *ngIf="alertModel&&alertModel.isShow && alertModel.alertType=='Fail'">
+                    <h4 class="alert-heading">{{alertModel.alertMessege}}</h4>
+                    <p>{{alertModel.alertDetailMessege}}</p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                        (click)="alertModel.isShow=false">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <form #f="ngForm" (ngSubmit)="onFormSubmit(f)" fxLayout="column" fxLayoutAlign="center center">
+                <mat-form-field   class="form-component">
+                    <input name="userFirstName" matInput placeholder="First name" type="text"
+                        [(ngModel)]="userModel.userFirstName" required #userFirstNamecomponent="ngModel"
+                        pattern="[A-Za-z ]{2,}"
+                        >
 
-                </div> 
-            -->
-        <div class="form-group ">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                </div>
-                <input name="userFirstName" class="form-control" placeholder="First name" type="text" 
-                [(ngModel)]="userModel.userFirstName" required #userFirstNamecomponent="ngModel"
-                pattern="[A-Za-z ]{2,}"
-                >
-            </div> 
-            <small id="userFirstNameHelpBlock" class="form-text text-muted alert-danger" *ngIf="userFirstNamecomponent.touched && userFirstNamecomponent.invalid">
-                    Please insert correct name.Only characters allowed.
-            </small>
-        </div>  
-        <div class="form-group ">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                </div>
-                <input name="userLastName" class="form-control" placeholder="Last name" type="text" 
-                [(ngModel)]="userModel.userLastName" required #userLastNamecomponent="ngModel"
-                pattern="[A-Za-z ]{2,}"
-                >
-            </div> 
-            <small id="userLastNameHelpBlock" class="form-text text-muted alert-danger" *ngIf="userLastNamecomponent.touched && userLastNamecomponent.invalid">
-                    Please insert correct name.Only characters allowed.
-            </small>
-        </div>    
-        <!-- form-group// -->
-        <div class="form-group">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-                </div>
-                <input name="email" class="form-control" placeholder="Email address" type="email" [(ngModel)]="userModel.email" 
-                pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
-                required email #emailComponent="ngModel">
-            </div>
-            
-            <small id="emailHelpBlock" class="form-text text-muted alert-danger" *ngIf="emailComponent.touched && emailComponent.invalid">
-                    Please insert correct email address.
-            </small>
-        </div>
-        <div class="form-group">
-        <div class="input-group">
-                
-            <div class="input-group-prepend">
-                <span id="phoneNumber" class="input-group-text"> <i class="fa fa-phone"></i> </span>
-            </div>
-            <input name="phoneNumber" class="form-control" placeholder="Phone number" type="text" [(ngModel)]="userModel.phoneNumber" 
-            required #phoneNumbercomponent="ngModel"
-            pattern="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$"
-            >
-        </div> 
-        <small id="phoneNumberHelpBlock" class="form-text text-muted alert-danger" *ngIf="phoneNumbercomponent.touched && phoneNumbercomponent.invalid">
-                Please insert correct phone number.Min 10 digit.
-        </small>
-        </div>
-        
-        <!-- form-group// -->
-        <!-- <div class="form-group input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text"> <i class="fa fa-building"></i> </span>
-            </div>
-            <select class="form-control">
-                <option selected=""> Select job type</option>
-                <option>Designer</option>
-                <option>Manager</option>
-                <option>Accaunting</option>
-            </select>
-        </div>  -->
-        <!-- form-group end.// -->
-        <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                    </div>
-                    <input name="userPassword" class="form-control" placeholder="Create password" type="password" [(ngModel)]="userModel.userPassword" 
-                    required #userPasswordComponent="ngModel"
-                    minlength="6"
-                    >
-                </div> 
-                <small id="userPasswordHelpBlock" class="form-text text-muted alert-danger" *ngIf="userPasswordComponent.touched && userPasswordComponent.invalid">
-                        Please insert correct password.Min 6 characters.
-                </small>
-        </div>
+                    <mat-error
+                        *ngIf="userFirstNamecomponent.touched && userFirstNamecomponent.invalid && !userFirstNamecomponent.hasError('required')">
+                        Please enter valid name.Only characters allowed.
+                    </mat-error>
+                    <mat-error *ngIf="userFirstNamecomponent.touched && userFirstNamecomponent.hasError('required')">
+                        First name is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
 
-        <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                    </div>
-                    <input name="repassword" class="form-control" placeholder="Create password" type="password" [(ngModel)]="userModel.reuserPassword" 
-                    required #repasswordComponent="ngModel" minlength="6">
-                </div> 
-                <small id="rePasswordHelpBlock" class="form-text text-muted alert-danger" *ngIf="repasswordComponent.touched && repasswordComponent.invalid">
-                        Please re insert correct password.
-                </small> 
-                <small id="rePasswordHelpBlock" class="form-text text-muted alert-danger" 
-                *ngIf="repasswordComponent.touched && repasswordComponent.valid && repasswordComponent.value!=userPasswordComponent.value">
-                        Your inserted password doesn't match.
-                </small>
-        </div>
-        
-        
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block" [disabled]="!f.valid || repasswordComponent.value!=userPasswordComponent.value"
-            [routerLink]="[ '/account/register' ]"> Create Account  </button>
-            <!-- [disabled]="!f.valid" -->
-        </div> <!-- form-group// -->      
-        <p class="text-center">Have an account? <a [routerLink]="[ '/account/login']">Log In</a> </p>                                                                 
-    </form>
-    </article>
-    </div> <!-- card.// -->
-    
+                <mat-form-field   class="form-component">
+                    <input name="userLastName" matInput placeholder="Last name" type="text"
+                        [(ngModel)]="userModel.userLastName" required #userLastNamecomponent="ngModel"
+                        pattern="[A-Za-z ]{2,}"
+                        >
+
+                    <mat-error
+                        *ngIf="userLastNamecomponent.touched && userLastNamecomponent.invalid && !userLastNamecomponent.hasError('required')">
+                        Please enter valid name.Only characters allowed.
+                    </mat-error>
+                    <mat-error *ngIf="userLastNamecomponent.touched && userLastNamecomponent.hasError('required')">
+                        Last name is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+
+
+                <mat-form-field   class="form-component">
+                    <input name="email" matInput placeholder="Email address" type="email" [(ngModel)]="userModel.email"
+                        pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" required email
+                        #emailComponent="ngModel"
+                        >
+
+                    <mat-error
+                        *ngIf="emailComponent.touched && emailComponent.invalid && !emailComponent.hasError('required')">
+                        Please enter valid email.
+                    </mat-error>
+                    <mat-error *ngIf="emailComponent.touched && emailComponent.hasError('required')">
+                        Email is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field   class="form-component">
+                    <input name="phoneNumber" matInput placeholder="Phone number" type="text"
+                        [(ngModel)]="userModel.phoneNumber" required #phoneNumbercomponent="ngModel"
+                        pattern="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$"
+                        >
+
+                    <mat-error
+                        *ngIf="phoneNumbercomponent.touched && phoneNumbercomponent.invalid && !phoneNumbercomponent.hasError('required')">
+                        Please enter valid phone number.Min 10 digit Ex. 469-987-1814
+                    </mat-error>
+                    <mat-error *ngIf="phoneNumbercomponent.touched && phoneNumbercomponent.hasError('required')">
+                        Phone number is <strong>required</strong>
+                    </mat-error>
+                    <mat-hint align="end">Ex. 469-987-1814 </mat-hint>
+                </mat-form-field>
+
+                <mat-form-field   class="form-component">
+                    <input name="userPassword" matInput placeholder="Create password" type="password"
+                        [(ngModel)]="userModel.userPassword" required #userPasswordComponent="ngModel" minlength="6"
+                        >
+
+                    <mat-error
+                        *ngIf="userPasswordComponent.touched && userPasswordComponent.invalid && !userPasswordComponent.hasError('required')">
+                        Please enter valid password.Min 6 characters
+                    </mat-error>
+                    <mat-error *ngIf="userPasswordComponent.touched && userPasswordComponent.hasError('required')">
+                        Password is <strong>required</strong>
+                    </mat-error>
+                    <mat-hint align="end" *ngIf="userPasswordComponent.value?.length<6">
+                        {{userPasswordComponent.value?.length}}/6 </mat-hint>
+                </mat-form-field>
+                <mat-form-field   class="form-component">
+                    <input name="repassword" matInput placeholder="Create password" type="password"
+                        [(ngModel)]="userModel.reuserPassword" required #repasswordComponent="ngModel" minlength="6"
+                        >
+                    <mat-error
+                        *ngIf="repasswordComponent.touched && !repasswordComponent.hasError('required') && (repasswordComponent.value!=userPasswordComponent.value) ">
+                        Please repeat password correctly
+                    </mat-error>
+                    <mat-error *ngIf="repasswordComponent.touched && repasswordComponent.hasError('required')">
+                        Password is <strong>required</strong>
+                    </mat-error>
+                    <mat-hint>Repeat password correctly.</mat-hint>
+                </mat-form-field>
+
+
+                <!-- <div class="form-group"> -->
+                <button type="submit" mat-raised-button color="primary"
+                    [disabled]="!f.valid || repasswordComponent.value!=userPasswordComponent.value"
+                    class="form-component"> Create Account </button>
+                <!-- [disabled]="!f.valid" -->
+                <!-- </div>  -->
+                <!-- form-group// -->
+                <p id="haveAccountQuestion">Have an account? <a [routerLink]="[ '/account/signin']">Log In</a> </p>
+            </form>
+        </mat-card-content>
+    </mat-card>
+
+</section>
+

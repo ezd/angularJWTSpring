@@ -1,0 +1,4 @@
+<input type="file" (change)="onFileUpload($event)" multiple=true>
+<button (click)="uploadFile()">Upload</button>
+{{uploadPercentage}}%
+Progress: <mat-progress-bar [value]="uploadPercentage"></mat-progress-bar>
