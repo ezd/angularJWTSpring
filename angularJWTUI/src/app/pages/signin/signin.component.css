@@ -1,0 +1,8 @@
+.form-component
+{
+max-width: 300px;
+width: 90%;
+}
+#btnSubmit{
+    margin: 10px 0px;
+}

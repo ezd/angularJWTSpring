@@ -31,7 +31,7 @@ public class DataInitialization {
         Role userRole=new Role(RoleEnum.USER);
         Set<Role> userRoleset=new HashSet<>();
         userRoleset.add(userRole);
-        NewUserDetail newUserDetail = new NewUserDetail(userUUID,"Alemayew", "testma","4699871814","useruser","user@gmail.com");
+        NewUserDetail newUserDetail = new NewUserDetail(userUUID,"Alemayew", "testma","4699871814","123456","user@gmail.com");
         NewUserDetail newAdminDetail = new NewUserDetail(userUUID,"Miftah","Kemal ","4699871815","adminadmin","admin@gmail.com");
 
         userRegistrationService.saveUser(newUserDetail,userRoleset);

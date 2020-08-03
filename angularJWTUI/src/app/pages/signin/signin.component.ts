@@ -1,45 +1,33 @@
 import { Component, OnInit } from '@angular/core';
-import {NgForm} from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { BackEndService } from 'src/app/services/back-end.service';
-import { UserModel } from 'src/app/models/user.model';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login-page',
-  templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.css']
+  selector: 'app-signin',
+  templateUrl: './signin.component.html',
+  styleUrls: ['./signin.component.css']
 })
-export class LoginPageComponent implements OnInit {
-  user: UserModel[];
-messege:string;
+export class SigninComponent implements OnInit {
 
-  private username:string;
-  private password:string;
-  private authResulte;
-
+  email="";
+  password="";
+  authResulte;
+  messege:string;
 
   constructor(private backeEndService:BackEndService,private router:Router) { }
 
-    ngOnInit() {
-    }
-
-  
-
-  authenticate(){
-    // this.messege=this.authService.isAuthenticated(new UserInfo('abc','abc'))?'Authenticated':'not Authenticated';
-    //this.testdata=this.backeEndService.getTestdata();
-
+  ngOnInit(): void {
   }
-  onFormSubmit(f:NgForm){
-    if(f.value && f.value.username && f.value.password){
 
-      const username=f.value.username;
-      const password=f.value.password;
+  onSubmit(form:NgForm){
+    console.log(form);
+    const username=form.value.email;
+      const password=form.value.password;
       this.backeEndService.authenticate(username,password).subscribe(result=>{
         console.log("result is:",result);
         
         if(result!=null){
-          // debugger
           this.authResulte=result
           console.log("Auth result:",this.authResulte);
           
@@ -55,9 +43,6 @@ messege:string;
         
         this.messege="Invalid user credential.";
       });
-    }
-    
-    
   }
 
 }

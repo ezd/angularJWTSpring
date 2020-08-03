@@ -29,8 +29,8 @@ export class UserRegistrationComponent implements OnInit {
     this.userModel=new UserModel();
     this.userModel.email=formData.value.email;
     this.userModel.userPassword=formData.value.userPassword;
-    this.userModel.userFirstName=formData.value.userFirstName;
-    this.userModel.userLastName=formData.value.userLastName;
+    this.userModel.firstName=formData.value.userFirstName;
+    this.userModel.lastName=formData.value.userLastName;
     this.userModel.phoneNumber=formData.value.phoneNumber;
     this.userModel.reuserPassword=formData.value.userPassword;
     // this.userModel=
@@ -41,7 +41,7 @@ export class UserRegistrationComponent implements OnInit {
         console.log("result",result); 
         this.savedUser=result;
         // sessionStorage.setItem("pid",this.savedUser.userPublicId)
-        this.router.navigate(['/account/login'])
+        this.router.navigate(['/account/signin'])
         //debugger
         //this.alertModel=new AlertModel(true,"Success","User Saved","The user successfully registerd.")
       },

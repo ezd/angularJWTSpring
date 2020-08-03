@@ -1,0 +1,30 @@
+<mat-card class="example-card">
+    <mat-card-header fxLayout="column" fxLayoutAlign="center center">
+    </mat-card-header>
+    <mat-card-content>
+        <div class="dropZone" dropZone (hovered)="toggleHover($event)" (dropped)="onDrop($event)"
+            [class.hovering]="isHovering" fxLayout="column" fxLayoutAlign="center center">
+            <p>Drag and Drop or chose Files</p>
+            <div class="file">
+                <label class="file-label">
+
+                    <button mat-raised-button color="primary"
+                        onclick="document.getElementById('imageselector').click();">Load images</button>
+
+                    <input id="imageselector" style="display: none;" class="file-input" type="file"
+                        (change)="onDrop($event.target.files)" multiple>
+
+
+                </label>
+            </div>
+        </div>
+
+
+    </mat-card-content>
+</mat-card>
+<h3>Uploads</h3>
+
+<div *ngFor="let file of files">
+    <uploader-task [file]="file"></uploader-task>
+
+</div>

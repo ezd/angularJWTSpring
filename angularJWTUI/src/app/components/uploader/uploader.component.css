@@ -1,0 +1,8 @@
+.dropZone{
+    border: 1px dashed green;
+    width: 100%;
+    /* height: 200px; */
+}
+.example-card{
+    margin-bottom: 10px;
+}

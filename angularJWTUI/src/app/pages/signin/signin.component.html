@@ -1,0 +1,43 @@
+<section>
+
+        <mat-card class="example-card">
+            <mat-card-header fxLayout="column" fxLayoutAlign="center center">
+                <mat-card-title>Login</mat-card-title>
+            </mat-card-header>
+        <mat-card-content>
+            <form fxLayout="column" fxLayoutAlign="center center" #f="ngForm" (ngSubmit)="onSubmit(f)">
+                <mat-form-field class="form-component">
+                    <input matInput placeholder="Your Email" ngModel name="email" email required #emailInput="ngModel">
+                    <mat-error *ngIf="emailInput.hasError('required')">Email is required.</mat-error>
+                    <mat-error *ngIf="!emailInput.hasError('required')">Invalid Error</mat-error>
+                </mat-form-field>
+                <mat-form-field class="form-component" hintLabel="It should be atleast 6 characters">
+                    <input matInput placeholder="Your password" ngModel name="password" type="password" required
+                        minlength="6" #passwordInput="ngModel">
+                    <!-- <mat-error *ngIf="passwordInput.value?.length < 6">Minimum 6 characters required.</mat-error>
+                <mat-error *ngIf="!passwordInput.hasError('required') && passwordInput.value?.length>6">Invalid Error</mat-error> -->
+                    <mat-hint *ngIf="passwordInput.value?.length<6" align="end">{{passwordInput.value?.length}}/6
+                    </mat-hint>
+                </mat-form-field>
+
+                <button mat-raised-button color="primary" id="btnSubmit" class="form-component"
+                    type="submit" [disabled]="!f.valid">Submit</button>
+            </form>
+        </mat-card-content>
+        <mat-card-actions fxLayout="column" fxLayoutAlign="center center">
+            <button mat-raised-button color="accent" type="button" id="btn-signup" class="form-component"
+                [routerLink]="[ '/account/register' ]"><i class="fas fa-user-plus"></i> Signup for New Account</button>
+        </mat-card-actions>
+    </mat-card>
+
+
+
+</section>
+<!-- 
+    <mat-form-field >
+    <mat-label>Your Birthdate</mat-label>
+    <input matInput [matDatepicker]="picker">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  -->

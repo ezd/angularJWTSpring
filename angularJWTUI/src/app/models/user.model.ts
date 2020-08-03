@@ -1,6 +1,6 @@
 export class UserModel {
-    public userFirstName:string;
-    public userLastName:string;
+    public firstName:string;
+    public lastName:string;
     public phoneNumber:string;
     public userPassword:string;
     public email:string;
