@@ -27,7 +27,7 @@
             <form #f="ngForm" (ngSubmit)="onFormSubmit(f)" fxLayout="column" fxLayoutAlign="center center">
                 <mat-form-field   class="form-component">
                     <input name="userFirstName" matInput placeholder="First name" type="text"
-                        [(ngModel)]="userModel.userFirstName" required #userFirstNamecomponent="ngModel"
+                        [(ngModel)]="userModel.firstName" required #userFirstNamecomponent="ngModel"
                         pattern="[A-Za-z ]{2,}"
                         >
 
@@ -42,7 +42,7 @@
 
                 <mat-form-field   class="form-component">
                     <input name="userLastName" matInput placeholder="Last name" type="text"
-                        [(ngModel)]="userModel.userLastName" required #userLastNamecomponent="ngModel"
+                        [(ngModel)]="userModel.lastName" required #userLastNamecomponent="ngModel"
                         pattern="[A-Za-z ]{2,}"
                         >
 

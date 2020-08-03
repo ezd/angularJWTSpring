@@ -16,8 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 
 @RestController
-//@RequestMapping("/public")
-@CrossOrigin(origins = "*",maxAge = 3600)
+@RequestMapping("/public")
 public class AuthenticationController {
 
     @Autowired
@@ -32,7 +31,7 @@ public class AuthenticationController {
     @Autowired
     JwtTokenUtil jwtTokenUtil;
 
-    @PostMapping("/public/authenticate")
+    @PostMapping("/authenticate")
     public TokenPayLoad authenticate(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
         try {
             authenticationManager.authenticate(
@@ -49,7 +48,7 @@ public class AuthenticationController {
 
     }
 
-    @PostMapping(value = "/public/createUser")
+    @PostMapping(value = "/createUser")
     ResponseEntity<NewUserDetail> createUser(@RequestBody NewUserDetail userDetail) throws Exception{
         System.out.println("it is coming to save the user");
         NewUserDetail savedUserDetail=null;
@@ -66,13 +65,5 @@ public class AuthenticationController {
     }
 
 
-    @GetMapping("/user/resource")
-    public MockUserResource resource(){
-        return new MockUserResource("somename","someValue");
-    }
 
-    @GetMapping("/user/dosomething")
-    public String usertesting(){
-        return "user Testing works";
-    }
 }
