@@ -24,6 +24,7 @@ import { DropZoneDirective } from './components/drop-zone.directive';
 import { UploaderTaskComponent } from './components/uploader-task/uploader-task.component';
 import { UploaderComponent } from './components/uploader/uploader.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

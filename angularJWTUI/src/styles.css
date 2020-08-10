@@ -1,4 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+html, body { height: 100%; border: 1px solid green;}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+mat-drawer-container{
+    height: 100%;
+    
+    
+}
+mat-drawer{
+    width: 250px;
+}
+
+mat-toolbar {
+    position: sticky;
+    position: -webkit-sticky; /* For macOS/iOS Safari */
+    top: 0; /* Sets the sticky toolbar to be on top */
+    z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+}
+

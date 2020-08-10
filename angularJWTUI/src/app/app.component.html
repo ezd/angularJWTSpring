@@ -1,6 +1,69 @@
-<div class="container">
+<!-- <div class="container">
   <app-navbar></app-navbar>
   <hr>
-  <router-outlet></router-outlet>
   
-</div>
+  
+</div> -->
+<!-- <div class="page-container">
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav mode="side" opened>Sidenav content</mat-sidenav>
+    <mat-sidenav-content>Main content</mat-sidenav-content>
+  </mat-sidenav-container>
+</div> -->
+<mat-toolbar color="primary">
+  <div class="menuitems-left">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>My App</span>
+  </div>
+  <span class="example-spacer"></span>
+  <div class="menuitems-right" fxFlex fxLayout fxLayoutAlign="end" >
+    <div fxHide.xs>
+      <ul fxLayout="row" fxLayoutGap="10px" class="menuitems" >
+      <li class="menuitem"><a routerLinkActive="active" [routerLink]="[ '/aboutus' ]" >Aboutus</a></li>
+      <li class="menuitem"><a routerLinkActive="active" [routerLink]="[ '/contactus' ]" > Contactus</a></li>
+      <li class="menuitem"><a routerLinkActive="active" [routerLink]="[ '/register' ]" >Register</a></li>
+      <li class="menuitem"><a routerLinkActive="active" [routerLink]="[ '/login' ]" >Login</a></li>
+      <li class="menuitem"><a routerLinkActive="active" [routerLink]="[ '/logout' ]" >Logout</a></li> 
+    </ul>
+    </div>
+    <div fxHide.gt-xs>
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" >
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    
+    <mat-menu #menu="matMenu" yPosition="below" xPosition="before" class="menuitems"> 
+      <a routerLinkActive="active" [routerLink]="[ '/aboutus' ]" mat-menu-item class="menuitme">Aboutus</a>
+      <a routerLinkActive="active" [routerLink]="[ '/contactus' ]" mat-menu-item class="menuitme">Contactus</a>
+      <a routerLinkActive="active" [routerLink]="[ '/register' ]" mat-menu-item class="menuitme">Register</a>
+      <a routerLinkActive="active" [routerLink]="[ '/login' ]" mat-menu-item class="menuitme">Login</a>
+      <a routerLinkActive="active" [routerLink]="[ '/logout' ]" mat-menu-item class="menuitme">Logout</a>
+    </mat-menu>
+    </div>
+    
+    
+  </div> 
+  
+  
+</mat-toolbar>
+
+<mat-drawer-container>
+  <mat-drawer mode="side" #matDrawer [opened]="showsidenave">Drawer content</mat-drawer>
+  <!-- opened -->
+  <mat-drawer-content>
+  
+  <div id="arrowbuttoncontainer" >
+    <button mat-icon-button color="primary" aria-label="Example icon button with a home icon" (click)="showsidenave=!showsidenave" *ngIf="!showsidenave" class="icons">
+        <mat-icon>arrow_forward_ios</mat-icon>
+      </button>
+      <button mat-icon-button color="primary" aria-label="Example icon button with a home icon" (click)="showsidenave=!showsidenave" *ngIf="showsidenave" class="icons">
+        <mat-icon>arrow_back_ios</mat-icon>
+      </button>
+  </div>
+  <div id="maincontentcontainer">
+    <router-outlet></router-outlet>
+  </div>
+  
+  </mat-drawer-content>
+</mat-drawer-container>
